@@ -16,8 +16,8 @@ public class JPARepository {
      private EntityManager entityManager;
 
      public List<Person> getPersonsByCity(String cityOfLiving){
-          Query query = entityManager.createQuery("select p from Person p where lower(p.cityOfLiving) = lower(:city)", Person.class);
-          query.setParameter("city", cityOfLiving);
+          Query query = entityManager.createQuery("select p from Person p where lower(p.cityOfLiving) = :cityOfLiving", Person.class);
+          query.setParameter("cityOfLiving", cityOfLiving);
           return query.getResultList();
      }
 }
