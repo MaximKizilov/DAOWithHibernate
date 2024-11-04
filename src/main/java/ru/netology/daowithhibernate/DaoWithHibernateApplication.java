@@ -3,16 +3,11 @@ package ru.netology.daowithhibernate;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import ru.netology.daowithhibernate.entity.City;
-import ru.netology.daowithhibernate.entity.Person;
-
-import java.util.ArrayList;
-import java.util.List;
+import ru.netology.daowithhibernate.entity.Persons;
+import ru.netology.daowithhibernate.entity.PersonsRequisite;
 
 @SpringBootApplication
 public class DaoWithHibernateApplication implements CommandLineRunner {
@@ -21,16 +16,17 @@ public class DaoWithHibernateApplication implements CommandLineRunner {
     private EntityManager em;
 
     public static void main(String[] args) {
-        SpringApplication.run(DaoWithHibernateApplication.class, args);
+        SpringApplication app = new SpringApplication(DaoWithHibernateApplication.class);
+        app.run(args);
     }
 
     @Override
     @Transactional
     public void run(String... args) throws Exception {
-        List<City> cities  = new ArrayList<>();
-        cities.add(new City(1L, "Москва"));
-        cities.add(new City(2L, "Казань"));
-        cities.add(new City(3L, "Рязань"));
-        cities.forEach(em::persist);
+        Persons masha = new Persons.PersonsBuilder(
+                new PersonsRequisite("Маша", "Маркова", 18), "Москва")
+                .setPhoneNumber("+79202073131").build();
+
+        em.persist(masha);
     }
 }
