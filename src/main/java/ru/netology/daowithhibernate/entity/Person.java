@@ -48,6 +48,30 @@ public class Person {
         }
     }
 
+    public PersonsRequisite getPersonsRequisite() {
+        return personsRequisite;
+    }
+
+    public void setPersonsRequisite(PersonsRequisite personsRequisite) {
+        this.personsRequisite = personsRequisite;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getCityOfLiving() {
+        return cityOfLiving;
+    }
+
+    public void setCityOfLiving(String cityOfLiving) {
+        this.cityOfLiving = cityOfLiving;
+    }
+
     @Override
     public String toString() {
         return "Person{" +

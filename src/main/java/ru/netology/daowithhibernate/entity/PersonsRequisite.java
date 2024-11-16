@@ -1,9 +1,6 @@
 package ru.netology.daowithhibernate.entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.validation.annotation.Validated;
 
 @Embeddable
 public class PersonsRequisite {
