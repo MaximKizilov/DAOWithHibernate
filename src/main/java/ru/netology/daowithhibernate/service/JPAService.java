@@ -15,14 +15,14 @@ public class JPAService {
         this.repository = repository;
     }
     public List<Person> getPersonsByCity(String city) {
-        return repository.findByCityOfLiving(city);
+        return repository.findByCity(city);
     }
 
     public List<Person> getPersonsByAge(int age) {
-        return repository.findPersonByPersonsRequisiteAgeBeforeOrderByPersonsRequisiteAsc(age);
+        return repository.findPersonByAge(age);
     }
 
     public Optional<Person> getPersonsByNameAndSurname(String name, String surname) {
-        return repository.findPersonByPersonsRequisite_NameContainingIgnoreCaseAndAndPersonsRequisite_SurnameContainingIgnoreCase(name, surname);
+        return repository.findPersonByNameSurname(name, surname);
     }
 }

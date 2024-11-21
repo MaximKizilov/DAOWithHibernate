@@ -1,6 +1,7 @@
 package ru.netology.daowithhibernate.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.*;
 import ru.netology.daowithhibernate.entity.Person;
 import ru.netology.daowithhibernate.entity.PersonsRequisite;
@@ -10,17 +11,11 @@ import java.util.Optional;
 
 @Repository
 public interface PersonRepository extends JpaRepository<Person, PersonsRequisite> {
+     @Query(value = "SELECT * FROM Persons WHERE city_of_living = :city", nativeQuery = true)
+     public List<Person> findByCity(String city);
+     @Query(value = "SELECT * FROM Persons WHERE age<?1  ORDER BY age ASC", nativeQuery = true)
+     public List<Person> findPersonByAge(int age);
+     @Query(value = "SELECT * FROM Persons WHERE name like :name and surname like :surname", nativeQuery = true)
+     Optional<Person> findPersonByNameSurname(String name, String surname);
 
-     public List<Person> findByCityOfLiving(String city);
-     public List<Person> findPersonByPersonsRequisiteAgeBeforeOrderByPersonsRequisiteAsc(int age);
-     Optional<Person> findPersonByPersonsRequisite_NameContainingIgnoreCaseAndAndPersonsRequisite_SurnameContainingIgnoreCase(String name, String surname);
-
-//     @PersistenceContext
-//     private EntityManager entityManager;
-//
-//     public List<Person> getPersonsByCity(String cityOfLiving){
-//          Query query = entityManager.createQuery("select p from Person p where lower(p.cityOfLiving) = :cityOfLiving", Person.class);
-//          query.setParameter("cityOfLiving", cityOfLiving.toLowerCase());
-//          return query.getResultList();
-//     }
 }
