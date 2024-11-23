@@ -12,7 +12,7 @@ import ru.netology.daowithhibernate.entity.PersonsRequisite;
 import java.util.List;
 
 @SpringBootApplication
-public class DaoWithHibernateApplication /*implements CommandLineRunner*/ {
+public class DaoWithHibernateApplication/* implements CommandLineRunner */{
 
 //    @PersistenceContext
 //    private EntityManager em;
