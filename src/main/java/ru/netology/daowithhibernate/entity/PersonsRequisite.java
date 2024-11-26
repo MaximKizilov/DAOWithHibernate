@@ -1,9 +1,12 @@
 package ru.netology.daowithhibernate.entity;
 
-import jakarta.persistence.Embeddable;
+
+import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 @Embeddable
-public class PersonsRequisite {
+public class PersonsRequisite implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     public PersonsRequisite() {
 

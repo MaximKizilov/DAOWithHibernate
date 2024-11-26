@@ -1,6 +1,10 @@
 package ru.netology.daowithhibernate.entity;
 
-import jakarta.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "persons")

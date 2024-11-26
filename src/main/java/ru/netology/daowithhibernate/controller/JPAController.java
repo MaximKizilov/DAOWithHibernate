@@ -1,5 +1,6 @@
 package ru.netology.daowithhibernate.controller;
 
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,12 +20,14 @@ public class JPAController {
         this.service = service;
     }
 
+
     @GetMapping("/by-city")
     public List<Person> getPersonsByCity(@RequestParam String city) {
             return service.getPersonsByCity(city);
     }
 
     @GetMapping("/by-age")
+    @Secured("ROLE_USER")
     public List<Person> getPersonsByAge(@RequestParam int age) {
         return service.getPersonsByAge(age);
     }
